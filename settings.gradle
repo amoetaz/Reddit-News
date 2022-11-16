@@ -14,3 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Reddit News"
 include ':app'
+
+
+include ':common:data'
+include ':common:domain'
+include ':features:articles'
+include ':features:article_detail'
