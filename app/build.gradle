@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.redditnews.redditnews'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.redditnews.redditnews"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -35,8 +35,10 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':features:article_detail')
+    implementation project(path: ':features:articles')
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -55,8 +57,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
 
     //activity fragment ktx
-    implementation("androidx.activity:activity-ktx:1.5.1")
-    implementation("androidx.fragment:fragment-ktx:1.5.2")
+    implementation("androidx.activity:activity-ktx:1.6.1")
+    implementation("androidx.fragment:fragment-ktx:1.5.4")
 
     // Kotlin components
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
@@ -68,7 +70,6 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$http_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$http_version"
     implementation "com.google.code.gson:gson:$gson_version"
-
 
 
     //hilt

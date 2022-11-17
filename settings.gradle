@@ -18,5 +18,7 @@ include ':app'
 
 include ':common:data'
 include ':common:domain'
+include ':common:presentation'
 include ':features:articles'
 include ':features:article_detail'
+
