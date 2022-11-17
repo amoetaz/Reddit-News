@@ -43,7 +43,6 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    @Named("main_okhttp")
     fun provideOkHttpClient(
         headersInterceptor: Interceptor,
         logging: HttpLoggingInterceptor
@@ -55,17 +54,6 @@ object RetrofitModule {
             .build()
     }
 
-    @Provides
-    @Singleton
-    @Named("youtube_okhttp")
-    fun provideYoutubeOkHttpClient(
-        logging: HttpLoggingInterceptor
-    ): Call.Factory {
-        return OkHttpClient.Builder()
-            .connectTimeout(REQUEST_TIME_OUT, TimeUnit.SECONDS)
-            .addInterceptor(logging)
-            .build()
-    }
 
     @Provides
     @Singleton
@@ -81,7 +69,7 @@ object RetrofitModule {
     fun provideRetrofit(gson: Gson, okHttpClient: Call.Factory): Retrofit = Retrofit.Builder()
         .callFactory(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
-        .baseUrl("https://seniorapp.live/api/")
+        .baseUrl("https://www.reddit.com/")
         .build()
 
 

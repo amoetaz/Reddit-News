@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface ArticlesServices {
 
     @GET("r/kotlin/.json")
-    fun getArticles() : ArticlesResponse
+    suspend fun getArticles() : ArticlesResponse
 }

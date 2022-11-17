@@ -1,5 +1,6 @@
 package com.redditnews.domain.modules.articles.useCases
 
+import android.util.Log
 import com.redditnews.domain.modules.articles.repository.ArticlesRepository
 import com.redditnews.domain.utils.Resource
 import kotlinx.coroutines.Dispatchers
@@ -11,6 +12,7 @@ class GetArticlesUseCase @Inject constructor(private val articlesRepository: Art
 
 
     operator fun invoke() = flow{
+
         emit(Resource.Loading)
 
         emit(articlesRepository.getArticles())

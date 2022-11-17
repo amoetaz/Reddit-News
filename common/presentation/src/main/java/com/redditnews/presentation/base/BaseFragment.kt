@@ -22,6 +22,5 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding>(@LayoutRes lay
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onCreated()
-
     }
 }

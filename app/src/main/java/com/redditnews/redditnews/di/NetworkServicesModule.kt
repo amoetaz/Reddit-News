@@ -2,6 +2,7 @@ package com.redditnews.redditnews.di
 
 
 
+import com.redditnews.data.modules.articles.remote.ArticlesServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,14 +15,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkServicesModule {
 
-   /* @Provides
-    @Singleton
-    fun provideAuthService(@Named("main_retrofit")retrofit: Retrofit): AuthServices =
-        retrofit.create(AuthServices::class.java)
-
     @Provides
     @Singleton
-    fun provideGeneralService(@Named("main_retrofit")retrofit: Retrofit): GeneralServices =
-        retrofit.create(GeneralServices::class.java)*/
+    fun provideArticlesService(retrofit: Retrofit): ArticlesServices =
+        retrofit.create(ArticlesServices::class.java)
 
 }

@@ -66,8 +66,6 @@ data class ArticleDto(
     val domain: String?,
     @SerializedName("downs")
     val downs: Int?,
-    @SerializedName("edited")
-    val edited: Double?,
     @SerializedName("gilded")
     val gilded: Int?,
     @SerializedName("hidden")

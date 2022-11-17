@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 class ArticlesRepositoryImp @Inject constructor(private val articlesRemoteDataSource: ArticlesRemoteDataSource) :
     ArticlesRepository {
+
     override suspend fun getArticles(): Resource<List<Article>?> {
         val resource = articlesRemoteDataSource.getArticles()
         return if (resource is Resource.Success)
