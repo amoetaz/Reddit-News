@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ArticleDetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="viewModel"
+            type="com.redditnews.article_detail.ArticleDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ArticleDetailFragment">
 
-</FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:fillViewport="true"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    toggleVisibility="@{viewModel.article.thumbnail != null}"
+                    loadImageUrl="@{viewModel.article.thumbnail}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/iv_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <TextView
+                    android:text="@{viewModel.article.desc}"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"
+                    tools:text="this is sample text"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

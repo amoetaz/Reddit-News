@@ -20,7 +20,7 @@
             tools:listitem="@layout/item_article"
             android:id="@+id/rv_list"
             android:orientation="vertical"
-            articles_list="@{viewModel._articleResponse.toData()}"
+            articles_list="@{viewModel.articleResponse.toData()}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="0dp"/>

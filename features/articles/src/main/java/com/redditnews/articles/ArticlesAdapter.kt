@@ -13,7 +13,7 @@ import com.redditnews.domain.models.Article
 class ArticlesAdapter() :
     ListAdapter<Article, ArticlesAdapter.ArticleViewHolder>(ArticleDiffCallback) {
 
-
+    var onItemClick : (Article)-> Unit = {}
     inner class ArticleViewHolder(val binding: ItemArticleBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -42,7 +42,7 @@ class ArticlesAdapter() :
         holder.binding.apply {
             article = item
             holder.itemView.setOnClickListener {
-
+                onItemClick(item)
             }
         }
     }

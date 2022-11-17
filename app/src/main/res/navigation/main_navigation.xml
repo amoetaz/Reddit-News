@@ -7,9 +7,18 @@
     <fragment
         android:id="@+id/articleDetailFragment"
         android:name="com.redditnews.article_detail.ArticleDetailFragment"
-        android:label="ArticleDetailFragment" />
+        android:label="ArticleDetailFragment" >
+        <deepLink
+            app:uri="android-app://com.redditnews.articles/articlesFragment?article={article}" />
+
+    </fragment>
     <fragment
         android:id="@+id/articlesFragment"
         android:name="com.redditnews.articles.ArticlesFragment"
-        android:label="ArticlesFragment" />
+        android:label="ArticlesFragment" >
+
+        <action
+            android:id="@+id/action_articlesFragment_to_articleDetailFragment"
+            app:destination="@id/articleDetailFragment" />
+    </fragment>
 </navigation>

@@ -7,16 +7,14 @@ import com.redditnews.domain.modules.articles.useCases.GetArticlesUseCase
 import com.redditnews.domain.utils.Resource
 import com.redditnews.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
 class ArticlesViewModel @Inject constructor(private val getArticlesUseCase: GetArticlesUseCase) :
     BaseViewModel() {
 
-    val _articleResponse = MutableStateFlow<Resource<List<Article>?>>(Resource.Default)
+    private val _articleResponse = MutableStateFlow<Resource<List<Article>?>>(Resource.Default)
     val articleResponse = _articleResponse
 
      init {
@@ -26,7 +24,6 @@ class ArticlesViewModel @Inject constructor(private val getArticlesUseCase: GetA
 
         getArticlesUseCase()
             .onEach {
-                Log.d("dfgfdgdfgfd", "getArticles: ${it.toData()?.size}")
                 _articleResponse.value = it
             }
             .launchIn(viewModelScope)
