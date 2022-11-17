@@ -1,11 +1,14 @@
 package com.redditnews.redditnews.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.Call
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -44,10 +47,13 @@ object RetrofitModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
+        @ApplicationContext context: Context,
         headersInterceptor: Interceptor,
         logging: HttpLoggingInterceptor
     ): Call.Factory {
+        val cacheSize = 10 * 1024 * 1024
         return OkHttpClient.Builder()
+            .cache(Cache(context.cacheDir , cacheSize.toLong()))
             .connectTimeout(REQUEST_TIME_OUT, TimeUnit.SECONDS)
             .addInterceptor(logging)
             .addInterceptor(headersInterceptor)

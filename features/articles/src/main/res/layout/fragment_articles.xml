@@ -25,5 +25,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
 
+        <com.redditnews.articles.ErrorsLoadingView
+            android:id="@+id/el_view"
+            ev_onTryClick="@{()->viewModel.getArticles()}"
+            setErrorLoading="@{viewModel.articleResponse}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:type="none" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

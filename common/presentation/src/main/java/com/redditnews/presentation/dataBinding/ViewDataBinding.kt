@@ -20,3 +20,4 @@ fun View.toggleVisibility(show: Boolean) {
 
     visibility = if (show) View.VISIBLE else View.GONE
 }
+

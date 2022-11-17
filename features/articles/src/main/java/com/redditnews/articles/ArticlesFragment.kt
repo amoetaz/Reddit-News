@@ -1,6 +1,9 @@
 package com.redditnews.articles
 
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,16 +36,27 @@ class ArticlesFragment : BaseFragment<ArticlesViewModel , FragmentArticlesBindin
         }
         binding.rvList.adapter = articleAdapter
         articleAdapterClicks()
+        requireActivity().title = "Reddit News"
     }
 
     private fun articleAdapterClicks() {
         articleAdapter.onItemClick = {
+            Log.d("sdfsdfdsfds", "articleAdapterClicks: $it")
             val request = NavDeepLinkRequest.Builder
-                .fromUri("android-app://com.redditnews.articles/articlesFragment?article=${Gson().toJson(it)}".toUri())
+                .fromUri("android-app://com.redditnews.articles/articlesFragment?article=${Gson().toJson(it.apply {desc = desc?.replace("#" , "") })}".toUri())
                 .build()
             findNavController().navigate(request)
 
         }
     }
 
+}
+
+fun String?.toSpannedText(): Spanned {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        return Html.fromHtml(this, Html.FROM_HTML_MODE_LEGACY)
+    } else {
+        @Suppress("DEPRECATION")
+        return Html.fromHtml(this)
+    }
 }

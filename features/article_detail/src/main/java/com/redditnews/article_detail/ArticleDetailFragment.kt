@@ -23,7 +23,7 @@ class ArticleDetailFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fragmentViewModel.article = Gson().fromJson(arguments?.getString("article") , Article::class.java)
+        fragmentViewModel.article = Gson().fromJson(arguments?.getString("article")?.trim() , Article::class.java)
     }
     override fun onCreated() {
         binding.apply {
@@ -31,8 +31,7 @@ class ArticleDetailFragment
             viewModel = fragmentViewModel
         }
 
-
-
+        requireActivity().title = fragmentViewModel.article?.title
     }
 
 
