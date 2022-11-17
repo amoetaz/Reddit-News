@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:scaleType="centerCrop"
                     toggleVisibility="@{viewModel.article.thumbnail != null}"
                     loadImageUrl="@{viewModel.article.thumbnail}"
                     app:layout_constraintEnd_toEndOf="parent"
